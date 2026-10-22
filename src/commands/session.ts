@@ -41,7 +41,7 @@ export function cmdStatus(args: string[]): void {
 
 export function cmdAt(args: string[]): void {
   const query = args.filter((a) => !a.startsWith("-")).join(" ");
-  if (!query) throw new Error("Usage: moshi at <location number or name>");
+  if (!query) throw new Error("Usage: mship at <location number or name>");
   const { section } = findSection(moduleSections(activeModule().path), query);
   const label = section.kind === "location" ? `[${section.key}] ${section.title}` : section.title;
   withSession((s) => {
@@ -64,7 +64,7 @@ export function cmdFlag(args: string[]): void {
     } else {
       for (const a of pos) {
         const m = a.match(/^([^=]+)=(.*)$/);
-        if (!m) throw new Error(`Can't read "${a}" (use key=value, or moshi flag rm key)`);
+        if (!m) throw new Error(`Can't read "${a}" (use key=value, or mship flag rm key)`);
         s.flags[m[1].trim().toLowerCase()] = m[2];
       }
       if (pos.length) logEvent("flag", pos.join(" "));
@@ -130,6 +130,6 @@ export function cmdSession(args: string[]): void {
   emit(
     args,
     s,
-    `Session for ${id}, started ${s.started}. moshi status for details; moshi session new to start over.`,
+    `Session for ${id}, started ${s.started}. mship status for details; mship session new to start over.`,
   );
 }

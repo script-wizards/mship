@@ -20,7 +20,7 @@ export function cmdAudio(args: string[]): void {
   const files = audioFiles(activeModule().path);
   if (!query) {
     const text = files.length
-      ? `${files.map((f) => `  ${basename(f)}`).join("\n")}\n\nmoshi audio <words from a filename>`
+      ? `${files.map((f) => `  ${basename(f)}`).join("\n")}\n\nmship audio <words from a filename>`
       : "No audio files next to this module's PDF.";
     emit(args, { files }, text);
     return;

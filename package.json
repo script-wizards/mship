@@ -1,15 +1,15 @@
 {
-  "name": "moshi",
+  "name": "mship",
   "version": "0.0.1",
   "private": true,
   "description": "Fast CLI tools for running a Mothership game at the table",
   "bin": {
-    "moshi": "src/cli.ts"
+    "mship": "src/cli.ts"
   },
   "type": "module",
   "scripts": {
     "prepare": "git config core.hooksPath .githooks",
-    "moshi": "bun run src/cli.ts",
+    "mship": "bun run src/cli.ts",
     "test": "bun test",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",

@@ -6,7 +6,7 @@ import { appendLog, loadSession, loadState, saveSession } from "./state.ts";
 
 export function activeModule(): { id: string; path: string } {
   const m = loadState().module;
-  if (!m) throw new Error("No active module. Run: moshi use <module>");
+  if (!m) throw new Error("No active module. Run: mship use <module>");
   return m;
 }
 
@@ -31,7 +31,7 @@ export function findSection(sections: Section[], query: string): Found {
   if (/^\d+$/.test(q)) {
     const section = sections.find((s) => s.kind === "location" && s.key === q);
     if (section) return { section };
-    throw new Error(`No location ${q}. Try: moshi show`);
+    throw new Error(`No location ${q}. Try: mship show`);
   }
   const exact = sections.find((s) => s.id === q || slug(s.title) === slug(q));
   if (exact) return { section: exact };
@@ -42,7 +42,7 @@ export function findSection(sections: Section[], query: string): Found {
   });
   if (hits.length === 1) return { section: hits[0] };
   if (hits.length === 0)
-    throw new Error(`Nothing titled "${query}". Try: moshi show, or moshi search "${query}"`);
+    throw new Error(`Nothing titled "${query}". Try: mship show, or mship search "${query}"`);
   throw new Error(
     `"${query}" matches several:\n${hits.map((s) => `  ${s.id.padEnd(24)} ${s.title}`).join("\n")}`,
   );

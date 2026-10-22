@@ -13,12 +13,12 @@ import { cmdTable } from "./commands/table.ts";
 import { cmdUse } from "./commands/use.ts";
 import { wantsJson } from "./out.ts";
 
-const HELP = `moshi: Mothership Warden tools
+const HELP = `mship: Mothership Warden tools
 
-Usage: moshi <command> [args] [--json]
+Usage: mship <command> [args] [--json]
 
 Rolling
-  roll [expr] [+|-]        Roll dice, e.g. moshi roll 2d10   (default 1d10)
+  roll [expr] [+|-]        Roll dice, e.g. mship roll 2d10   (default 1d10)
   check <target|stat> [+|-] Stat Check or Save: d100 under target, criticals on doubles
                              --skill=N   add a Skill bonus
                              --who=NAME  use NAME's tracked stat; a failure adds Stress
@@ -38,9 +38,9 @@ Books & modules (bring your own PDFs; see README)
 Session (per module, kept on this machine)
   status                   Location, clocks, cast, flags, recent log
   at <location>            Move the crew there and show it
-  clock ...                Real-time or game-time clocks  (moshi clock help)
+  clock ...                Real-time or game-time clocks  (mship clock help)
   time [+30m]              Show or advance game time
-  cast ...                 Track PCs and NPCs: stats, stress, health  (moshi cast help)
+  cast ...                 Track PCs and NPCs: stats, stress, health  (mship cast help)
   flag [k=v ...]           Set or show flags  (flag rm k)
   log [text]               Show the session log, or add a note
   session [new]            Show the session, or archive it and start fresh

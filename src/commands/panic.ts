@@ -5,7 +5,7 @@ import { emit, modTag } from "../out.ts";
 import { diceFor, resolvePanic, takeMod } from "../rules.ts";
 import { resolveCastName } from "./cast.ts";
 
-const USAGE = "Usage: moshi panic <stress | cast name> [+|-]";
+const USAGE = "Usage: mship panic <stress | cast name> [+|-]";
 
 export function cmdPanic(args: string[]): void {
   const { mod, rest } = takeMod(args);

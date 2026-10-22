@@ -8,8 +8,8 @@ const REPO_ROOT = join(import.meta.dir, "..", "..");
 export type CoreBook = "survival" | "warden";
 
 const ENV_VAR: Record<CoreBook, string> = {
-  survival: "MOSHI_SURVIVAL_PDF",
-  warden: "MOSHI_WARDEN_PDF",
+  survival: "MSHIP_SURVIVAL_PDF",
+  warden: "MSHIP_WARDEN_PDF",
 };
 
 const HINT: Record<CoreBook, { word: string; re: RegExp }> = {
@@ -19,10 +19,10 @@ const HINT: Record<CoreBook, { word: string; re: RegExp }> = {
 
 export function bookDirs(): string[] {
   return [
-    process.env.MOSHI_BOOKS,
+    process.env.MSHIP_BOOKS,
     "books",
     join(REPO_ROOT, "books"),
-    join(homedir(), ".config", "moshi", "books"),
+    join(homedir(), ".config", "mship", "books"),
   ].filter((d): d is string => Boolean(d));
 }
 
@@ -58,7 +58,7 @@ export function corePdf(book: CoreBook): string {
   if (match) return match;
   throw new Error(
     `No PDF found for the ${book} book. Either:\n` +
-      `  • drop your legally-owned PDF (filename containing "${HINT[book].word}") into ./books/ or ~/.config/moshi/books/, or\n` +
+      `  • drop your legally-owned PDF (filename containing "${HINT[book].word}") into ./books/ or ~/.config/mship/books/, or\n` +
       `  • set ${ENV_VAR[book]} to its path.\n` +
       `No Mothership content is bundled; you must supply your own books.`,
   );
@@ -119,7 +119,7 @@ export function matchModule(query: string, modules: ModuleRef[]): ModuleRef {
   }
   const hits = modules.filter((m) => m.id.includes(q));
   if (hits.length === 1) return hits[0];
-  if (hits.length === 0) throw new Error(`No module matches "${query}". Try: moshi books`);
+  if (hits.length === 0) throw new Error(`No module matches "${query}". Try: mship books`);
   throw new Error(
     `"${query}" matches several modules:\n${hits.map((m) => `  ${m.id}`).join("\n")}`,
   );

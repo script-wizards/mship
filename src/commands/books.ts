@@ -27,6 +27,6 @@ export function cmdBooks(args: string[]): void {
     lines.push(`${mark}${m.id}${all && !m.firstParty ? "" : all ? "   (first-party)" : ""}`);
   }
   if (modules.length === 0) lines.push(`  none found; searched: ${bookDirs().join(", ")}`);
-  if (!all) lines.push("", "moshi books --all  to include third-party PDFs");
+  if (!all) lines.push("", "mship books --all  to include third-party PDFs");
   emit(args, { core, modules, active, searched: bookDirs() }, lines.join("\n"));
 }

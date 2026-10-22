@@ -5,13 +5,13 @@ import { emit } from "../out.ts";
 import type { Session } from "../state.ts";
 
 const USAGE = `Usage:
-  moshi clock                              list clocks (due ones first)
-  moshi clock add <name> <10m|2h> [--every] [--game]
+  mship clock                              list clocks (due ones first)
+  mship clock add <name> <10m|2h> [--every] [--game]
                                            real time by default; --game counts game time
                                            --every restarts it each time you mark it done
-  moshi clock done <name>                  handled it: restart (--every) or remove
-  moshi clock rm <name>
-  moshi clock pause | resume               stop real-time clocks during a break`;
+  mship clock done <name>                  handled it: restart (--every) or remove
+  mship clock rm <name>
+  mship clock pause | resume               stop real-time clocks during a break`;
 
 export function viewClocks(s: Session, now = Date.now()): ClockView[] {
   return s.clocks
@@ -41,7 +41,7 @@ function find(s: Session, name: string): number {
       .filter(([n]) => n.includes(q));
     if (hits.length === 1) i = hits[0][1];
   }
-  if (i < 0) throw new Error(`No clock "${name}". moshi clock`);
+  if (i < 0) throw new Error(`No clock "${name}". mship clock`);
   return i;
 }
 

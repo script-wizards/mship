@@ -3,11 +3,11 @@ import { applyFields, formatFields } from "../fields.ts";
 import { emit } from "../out.ts";
 
 const USAGE = `Usage:
-  moshi cast                          list everyone tracked
-  moshi cast add <name> [k=v ...]     start tracking someone
-  moshi cast set <name> k=v k+=N ...  change fields (stress+=1, status=dead)
-  moshi cast rm <name>
-  moshi cast <name>                   show one`;
+  mship cast                          list everyone tracked
+  mship cast add <name> [k=v ...]     start tracking someone
+  mship cast set <name> k=v k+=N ...  change fields (stress+=1, status=dead)
+  mship cast rm <name>
+  mship cast <name>                   show one`;
 
 function findName(cast: Record<string, unknown>, name: string): string {
   const q = name.toLowerCase();
@@ -32,12 +32,12 @@ export function cmdCast(args: string[]): void {
       const text = Object.entries(s.cast)
         .map(([n, f]) => `  ${n.padEnd(16)} ${formatFields(f)}`)
         .join("\n");
-      emit(args, s.cast, text || "No one tracked yet. moshi cast add <name> [k=v ...]");
+      emit(args, s.cast, text || "No one tracked yet. mship cast add <name> [k=v ...]");
       return;
     }
     if (sub === "add") {
       if (!name) throw new Error(USAGE);
-      if (s.cast[name]) throw new Error(`${name} is already tracked; use moshi cast set.`);
+      if (s.cast[name]) throw new Error(`${name} is already tracked; use mship cast set.`);
       s.cast[name] = {};
       const changes = applyFields(s.cast[name], rest);
       logEvent("cast", `added ${name} ${changes.join(" ")}`.trim());

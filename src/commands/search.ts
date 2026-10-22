@@ -4,7 +4,7 @@ import type { CoreBook } from "../pdf/config.ts";
 import { corePdf } from "../pdf/config.ts";
 import { extractPages, extractPanels } from "../pdf/extract.ts";
 
-const USAGE = "Usage: moshi search <text> [--in=module|survival|warden] [--limit=N]";
+const USAGE = "Usage: mship search <text> [--in=module|survival|warden] [--limit=N]";
 
 interface Hit {
   book: string;
@@ -63,18 +63,18 @@ export function cmdPage(args: string[]): void {
   const [book, n] = args.filter((a) => !a.startsWith("-"));
   const page = parseInt(n ?? "", 10);
   if (!book || Number.isNaN(page)) {
-    throw new Error("Usage: moshi page <survival|warden|module> <n>");
+    throw new Error("Usage: mship page <survival|warden|module> <n>");
   }
   let text: string | undefined;
   if (book === "module") {
     const mod = loadState().module;
-    if (!mod) throw new Error("No active module. Run: moshi use <module>");
+    if (!mod) throw new Error("No active module. Run: mship use <module>");
     const panels = extractPanels(mod.path).filter((p) => p.page === page);
     text = panels.length ? panels.map((p) => p.text.trimEnd()).join("\n\n") : undefined;
   } else if (book === "survival" || book === "warden") {
     text = extractPages(corePdf(book))[page - 1];
   } else {
-    throw new Error("Usage: moshi page <survival|warden|module> <n>");
+    throw new Error("Usage: mship page <survival|warden|module> <n>");
   }
   if (text === undefined) throw new Error(`No page ${page} in ${book}.`);
   emit(args, { book, page, text }, text.replace(/[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n"));
