@@ -13,7 +13,7 @@ export function renderSection(s: Section): string {
 
 function toc(sections: Section[]): string {
   const rows = sections.map((s) => `  ${s.id.padEnd(28)} ${s.kind.padEnd(9)} ${s.title}`);
-  return `${rows.join("\n")}\n\nmoshi show <id | location number | 3-1 | words from a title>`;
+  return `${rows.join("\n")}\n\nmship show <id | location number | 3-1 | words from a title>`;
 }
 
 export function cmdShow(args: string[]): void {

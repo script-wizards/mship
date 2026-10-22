@@ -18,7 +18,7 @@ export function cmdUse(args: string[]): void {
 
   if (!query) {
     const m = state.module ?? null;
-    emit(args, { module: m }, m ? `${m.id}  ${m.path}` : "No active module. moshi use <module>");
+    emit(args, { module: m }, m ? `${m.id}  ${m.path}` : "No active module. mship use <module>");
     return;
   }
 

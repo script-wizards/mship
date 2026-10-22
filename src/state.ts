@@ -40,9 +40,9 @@ export interface LogEntry {
 }
 
 export function stateDir(): string {
-  if (process.env.MOSHI_STATE_DIR) return process.env.MOSHI_STATE_DIR;
+  if (process.env.MSHIP_STATE_DIR) return process.env.MSHIP_STATE_DIR;
   const base = process.env.XDG_STATE_HOME || join(homedir(), ".local", "state");
-  return join(base, "moshi");
+  return join(base, "mship");
 }
 
 function readJson<T>(file: string, fallback: T): T {
@@ -55,11 +55,11 @@ function writeJson(file: string, value: unknown): void {
 }
 
 export function loadState(): State {
-  return readJson(join(stateDir(), "moshi-state.json"), {});
+  return readJson(join(stateDir(), "mship-state.json"), {});
 }
 
 export function saveState(state: State): void {
-  writeJson(join(stateDir(), "moshi-state.json"), state);
+  writeJson(join(stateDir(), "mship-state.json"), state);
 }
 
 function sessionBase(moduleId: string): string {

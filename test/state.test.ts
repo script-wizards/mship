@@ -12,8 +12,8 @@ import {
   saveState,
 } from "../src/state.ts";
 
-const dir = mkdtempSync(join(tmpdir(), "moshi-state-"));
-process.env.MOSHI_STATE_DIR = join(dir, "nested");
+const dir = mkdtempSync(join(tmpdir(), "mship-state-"));
+process.env.MSHIP_STATE_DIR = join(dir, "nested");
 afterAll(() => rmSync(dir, { recursive: true, force: true }));
 
 test("missing state reads as empty", () => {

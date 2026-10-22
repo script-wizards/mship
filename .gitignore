@@ -15,13 +15,13 @@ data
 *.m4a
 
 # Derived extraction/index cache (machine-local, never shipped)
-.moshi-cache/
+.mship-cache/
 *.db
 *.db-wal
 *.db-shm
 
 # Session/runtime state
-moshi-state.json
+mship-state.json
 
 # Playwright MCP scratch output
 .playwright-mcp/

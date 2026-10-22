@@ -4,9 +4,9 @@ import { emit, modTag } from "../out.ts";
 import { diceFor, resolveCheck, takeMod } from "../rules.ts";
 import { resolveCastName } from "./cast.ts";
 
-const USAGE = `Usage: moshi check <target | stat> [+|-] [--skill=N] [--who=name]
-  moshi check 35 +               plain target at advantage
-  moshi check strength --who=Ana  target from Ana's tracked stats; a failure adds her Stress`;
+const USAGE = `Usage: mship check <target | stat> [+|-] [--skill=N] [--who=name]
+  mship check 35 +               plain target at advantage
+  mship check strength --who=Ana  target from Ana's tracked stats; a failure adds her Stress`;
 
 const pad = (n: number): string => String(n).padStart(2, "0");
 
@@ -44,7 +44,7 @@ export function cmdCheck(args: string[]): void {
       } else lines.push(`Gain ${r.stress} Stress.`);
     }
     if (r.panic)
-      lines.push(`Critical failure: make a Panic Check (moshi panic ${name ?? "<stress>"}).`);
+      lines.push(`Critical failure: make a Panic Check (mship panic ${name ?? "<stress>"}).`);
     logEvent("check", lines.join(" "));
     emit(
       args,

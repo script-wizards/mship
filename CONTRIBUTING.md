@@ -39,8 +39,8 @@ Runtime is [Bun](https://bun.sh) 1.3, TypeScript, ES modules.
 ```sh
 bun install            # also runs `prepare`, which sets core.hooksPath to .githooks
 bun test
-bun run moshi <command> [args]
-bun link               # optional: `moshi` on your PATH
+bun run mship <command> [args]
+bun link               # optional: `mship` on your PATH
 
 bun run fmt            # oxfmt
 bun run lint           # oxlint
@@ -75,7 +75,7 @@ every other PDF as a module with an id derived from its filename
 (`moduleRef`). `matchModule` resolves a query to one module.
 
 `src/pdf/extract.ts` shells out to `pdftotext -layout` and `pdfinfo`, and
-caches results in `~/.cache/moshi/`. Landscape pages are cropped into three
+caches results in `~/.cache/mship/`. Landscape pages are cropped into three
 panels (`extractPanels`) so trifold columns don't interleave. Parsers in
 `src/parse/` take that fixed-width text as input, the way they do in dlmnwd, so
 a pdf.js emulation can feed the same parsers in the browser later. Keep
@@ -104,7 +104,7 @@ there so whoever runs the game can apply the book's procedures as written.
 - Parse flags by hand: positionals via `args.filter(a => !a.startsWith("-"))`,
   options as `--flag=value`. Advantage tokens go through `takeMod` first,
   because `-` is itself a token.
-- Anchor repo-relative paths on `import.meta.dir` so `moshi` works from any
+- Anchor repo-relative paths on `import.meta.dir` so `mship` works from any
   directory.
 
 ## Testing

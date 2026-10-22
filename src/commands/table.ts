@@ -3,7 +3,7 @@ import { rollDie } from "../dice.ts";
 import { emit } from "../out.ts";
 import { parseItems } from "../parse/sections.ts";
 
-const USAGE = "Usage: moshi table <section> [dN]   (rolls on a numbered list in that section)";
+const USAGE = "Usage: mship table <section> [dN]   (rolls on a numbered list in that section)";
 
 export function cmdTable(args: string[]): void {
   const pos = args.filter((a) => !a.startsWith("-"));

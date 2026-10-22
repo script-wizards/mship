@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "no
 import { homedir } from "node:os";
 import { join } from "node:path";
 
-const CACHE_DIR = join(homedir(), ".cache", "moshi");
+const CACHE_DIR = join(homedir(), ".cache", "mship");
 
 function run(bin: string, args: string[]): string {
   const out = spawnSync(bin, args, { encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
